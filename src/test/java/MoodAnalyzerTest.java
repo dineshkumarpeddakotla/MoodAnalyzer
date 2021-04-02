@@ -9,6 +9,7 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodTest = new MoodAnalyzer();
         String mood = moodTest.moodAnalyzer("I am in Sad Mood");
         Assertions.assertEquals("SAD",mood);
+
     }
 
     @Test
