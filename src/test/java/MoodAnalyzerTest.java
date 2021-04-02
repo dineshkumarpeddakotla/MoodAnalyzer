@@ -23,6 +23,6 @@ public class MoodAnalyzerTest {
     public void givenNull_WhenNull_ThrowsException() {
         MoodAnalyzer moodTest = new MoodAnalyzer();
         String mood = moodTest.moodAnalyzer(null);
-        Assertions.assertEquals("True", mood);
+        Assertions.assertEquals("HAPPY", mood);
     }
 }
