@@ -1,9 +1,13 @@
 import com.moodAnalyzer.MoodAnalyzer;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MoodAnalyzerTest {
     @Test
-    public void givenMood_WhenHappySad_ReturnMessage() {
+    public void givenMessage_WhenSad_ShouldReturnSad() {
         MoodAnalyzer moodTest = new MoodAnalyzer();
+        String mood = moodTest.moodAnalyzer("I am in Sad Mood");
+        Assertions.assertEquals("SAD",mood);
     }
 }
