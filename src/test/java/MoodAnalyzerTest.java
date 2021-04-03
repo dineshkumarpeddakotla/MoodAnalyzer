@@ -2,7 +2,7 @@ import com.moodAnalyzer.MoodAnalyzer;
 import com.moodAnalyzer.MoodAnalyzerException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
+
 
 public class MoodAnalyzerTest {
     @Test
@@ -17,20 +17,23 @@ public class MoodAnalyzerTest {
         String mood = moodTest.moodAnalyzer("I am in Any Mood");
         Assertions.assertEquals("HAPPY",mood);
     }
-    @SuppressWarnings("deprecation")
     @Test()
     public void givenNull_WhenNull_ThrowsException() {
         MoodAnalyzer moodTest = new MoodAnalyzer(null);
         try {
-            ExpectedException exceptionRule = ExpectedException.none();
-            exceptionRule.expect(MoodAnalyzerException.class);
-            String mood=moodTest.moodAnalyzer(null);
-            Assertions.assertEquals("NULL",mood);
+            moodTest.moodAnalyzer(null);
         }
         catch (MoodAnalyzerException e) {
-            e.printStackTrace();
+            Assertions.assertEquals(MoodAnalyzerException.exceptionType.nullInput,e.type);
         }
     }
-
-
+    @Test
+    public void givenEmpty_WhenEmpty_ThrowsException() {
+        MoodAnalyzer moodTest = new MoodAnalyzer();
+        try {
+            moodTest.moodAnalyzer("");
+        } catch (MoodAnalyzerException e) {
+            Assertions.assertEquals(MoodAnalyzerException.exceptionType.emptyInput, e.type);
+        }
+    }
 }
