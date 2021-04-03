@@ -13,6 +13,8 @@ public class MoodAnalyzer {
     public String moodAnalyzer(String message) throws MoodAnalyzerException {
         //Checking For Exception If Any
         try {
+            if (message.length() == 0)
+                throw new MoodAnalyzerException(MoodAnalyzerException.exceptionType.emptyInput, "YOU HAVE PASSED EMPTY,PLEASE CORRECT");
             if (message.contains("Sad"))
                 return "SAD";
             else
@@ -20,7 +22,7 @@ public class MoodAnalyzer {
         }
         //Catching Null Pointer Exception
         catch (NullPointerException e){
-            throw new MoodAnalyzerException("You Have Passed A Null,PLEASE CHECK AGAIN");
+            throw new MoodAnalyzerException(MoodAnalyzerException.exceptionType.nullInput,"You Have Passed A Null,PLEASE CHECK AGAIN");
         }
     }
 
